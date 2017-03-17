@@ -1,5 +1,11 @@
 require('babel-polyfill');
 
+var commonStores = require('fluxex/extra/commonStores');
+
 module.exports = require('fluxex').createApp({
-    product: require('./stores/product')
-}, require('./components/Html.jsx'));
+    page: commonStores.page,
+    search: require('./stores/search')
+}, require('./components/Html.jsx'), {
+    routing: require('./actions/routing'),
+    routeToURL: require('fluxex/extra/routeToURL')
+});

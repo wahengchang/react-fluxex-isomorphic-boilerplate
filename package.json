@@ -7,16 +7,18 @@
   "scripts": {
     "build": "gulp",
     "disc": "gulp disc_app",
-    "test": "gulp test_server",
+    "test": "export TESTPORT=3003;gulp test_server",
     "start": "gulp develop"
   },
   "dependencies": {
     "babel": "*",
+    "body-parser": "*",
     "express": "*",
     "fluxex": "*",
+    "iso-call": "*",
     "react": "*",
     "react-dom": "*",
-    "routr": "*"
+    "routes": "^2.1.0"
   },
   "devDependencies": {
     "tcp-port-used": "*",

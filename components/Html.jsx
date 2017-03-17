@@ -1,22 +1,16 @@
 var React = require('react');
 var Fluxex = require('fluxex');
+var Results = require('./Results.jsx');
+var SearchBox = require('./SearchBox.jsx');
+
 var Html = React.createClass({
     mixins: [
         Fluxex.mixin,
-        require('fluxex/extra/storechange'),
-        {listenStores: ['product']}
+        require('fluxex/extra/pjax')
     ],
 
-    getStateFromStores: function () {
-        return this.getStore('product').getData();
-    },
-
-    handleClick: function () {
-        var product = this.state;
-        product.sold++;
-        this.executeAction(function () {
-            return this.dispatch('UPDATE_PRODUCT', product);
-        });
+    getInitialState: function () {
+        return {};
     },
 
     render: function () {
@@ -24,16 +18,21 @@ var Html = React.createClass({
         <html>
          <head>
           <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, user-scalable=no" />
+          <Fluxex.Title />
          </head>
-         <body onClick={this.handleClick}>
+         <body onClick={this.handleClickLink}>
+          <SearchBox />
+          Sample Search:
           <ul>
-           <li>Product: {this.state.title}</li>
-           <li>Price: {this.state.price}</li>
-           <li>Sold: {this.state.sold}</li>
+           <li><a href="/search?q=apple">Apple</a></li>
+           <li><a href="/search?q=banana">Banana</a></li>
+           <li><a href="/search?q=orange">Orange</a></li>
           </ul>
-         <Fluxex.InitScript />
+          <Results />
+          <Fluxex.InitScript />
          </body>
-        </html>
+        </html> 
         );
     }
 });

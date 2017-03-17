@@ -1,20 +1,11 @@
 describe('React server side rendering', function () {
     it('should be good', function () {
-        browser.get('test');
-        expect(element.all(by.css('ul li')).count()).toEqual(3);
+        browser.get('search?q=apple');
+        expect(element.all(by.css('form input')).count()).toEqual(2);
     });
 
-    it('sold should be 0', function () {
-        browser.get('test');
-        expect(element(by.css('ul')).getInnerHtml()).toMatch(/Sold: 0/);
-    });
-});
-
-describe('React client side binding', function () {
-    it('should handle click', function () {
-        browser.get('test');
-        element(by.css('ul')).click().then(function () {
-            expect(element(by.css('ul')).getInnerHtml()).toMatch(/Sold: 1/);
-        });
+    it('keyword should be apple', function () {
+        browser.get('search?q=apple');
+        expect(element(by.css('div h1')).getInnerHtml()).toMatch(/apple/);
     });
 });

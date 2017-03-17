@@ -1,9 +1,13 @@
-'use strict';
+var apis = require('./api');
 
-module.exports = function () {
-    return this.dispatch('UPDATE_PRODUCT', {
-        title: 'sample product',
-        price: 12345,
-        sold: 0
-    });
+// All page actions here.
+// A page action will prepare all required store for a page
+// and update the page title.
+var pages = {
+    search: function () {
+        this.dispatch('UPDATE_TITLE', 'Search:' + this.getStore('page').getQuery().q);
+        return this.executeAction(apis.search, this.getStore('page').getQuery());
+    }
 };
+
+module.exports = pages;
