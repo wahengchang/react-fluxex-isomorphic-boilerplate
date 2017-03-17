@@ -1,0 +1,53 @@
+{
+  "name": "fluxex-example",
+  "version": "0.0.1",
+  "description": "A demo project for fluxex",
+  "author": "Zordius <zordius@yahoo-inc.com>",
+  "main": "server.js",
+  "scripts": {
+    "build": "gulp",
+    "disc": "gulp disc_app",
+    "test": "gulp test_server",
+    "start": "gulp develop"
+  },
+  "dependencies": {
+    "babel": "*",
+    "express": "*",
+    "fluxex": "*",
+    "react": "*",
+    "react-dom": "*",
+    "routr": "*"
+  },
+  "devDependencies": {
+    "tcp-port-used": "*",
+    "babel-eslint": "*",
+    "eslint": "*",
+    "eslint-plugin-react": "*",
+    "gulp-eslint": "*",
+    "babel-runtime": "*",
+    "babel-register": "*",
+    "babel-polyfill": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-plugin-transform-runtime": "*",
+    "browser-request": "*",
+    "protractor": "2.5.1",
+    "badge-render": "*",
+    "aliasify": "*",
+    "browserify": "*",
+    "envify": "*",
+    "disc": "*",
+    "watchify": "*",
+    "babelify": "*",
+    "nodemon": "*",
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-babel": "*",
+    "gulp-cached": "*",
+    "gulp-jsx-coverage": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "*"
+  }
+}
