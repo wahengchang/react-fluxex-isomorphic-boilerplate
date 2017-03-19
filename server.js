@@ -21,4 +21,4 @@ app.use(fluxexServerExtra.createMiddlewareWithRouting(fluxexapp));
 
 // Start server
 app.listen(process.env.TESTPORT || 3000);
-console.log('Fluxex started! Go http://localhost:3001/search?q=apple');
+console.log('Fluxex started! Go http://localhost:3001/about');
