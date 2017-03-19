@@ -1,7 +1,5 @@
 var React = require('react');
 var Fluxex = require('fluxex');
-// var Results = require('./Results.jsx');
-// var SearchBox = require('./SearchBox.jsx');
 
 var About = require('./About.jsx');
 var Hello = require('./Hello.jsx');
