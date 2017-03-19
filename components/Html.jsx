@@ -1,39 +1,47 @@
 var React = require('react');
 var Fluxex = require('fluxex');
-var Results = require('./Results.jsx');
-var SearchBox = require('./SearchBox.jsx');
+// var Results = require('./Results.jsx');
+// var SearchBox = require('./SearchBox.jsx');
+
+var About = require('./About.jsx');
+var Hello = require('./Hello.jsx');
 
 var Html = React.createClass({
     mixins: [
         Fluxex.mixin,
-        require('fluxex/extra/pjax')
+        require('fluxex/extra/pjax'),
+        require('fluxex/extra/storechange'),
+        require('fluxex/extra/routing').mixin,
+        {
+            listenStores: [
+                'page'
+            ]
+        }
     ],
-
+    getStateFromStores: function () {
+        return {
+            // Used to determine routing
+            routing: this.getStore('page')._get('routing')
+        };
+    },
     getInitialState: function () {
         return {};
     },
 
+    getPage: function () {
+        switch (this.state.routing.name) {
+        case 'hello':
+            return Hello;
+        case 'about':
+            return About;
+        default:
+            return Hello;
+        }
+    },
     render: function () {
-        return (
-        <html>
-         <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, user-scalable=no" />
-          <Fluxex.Title />
-         </head>
-         <body onClick={this.handleClickLink}>
-          <SearchBox />
-          Sample Search:
-          <ul>
-           <li><a href="/search?q=apple">Apple</a></li>
-           <li><a href="/search?q=banana">Banana</a></li>
-           <li><a href="/search?q=orange">Orange</a></li>
-          </ul>
-          <Results />
-          <Fluxex.InitScript />
-         </body>
-        </html> 
-        );
+        console.log('this.state.routing: ', this.state.routing);
+        var Page = this.getPage();
+        return <Page/>;
     }
 });
 
